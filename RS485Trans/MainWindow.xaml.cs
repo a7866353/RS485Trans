@@ -27,7 +27,7 @@ namespace RS485Trans
             this.Loaded += MainWindow_Loaded;
 
 
-            MainWin.Children.Add(new UICreater() { WinName = "InitWin" }.Get());
+            // MainWin.Children.Add(new UICreater() { WinName = "InitWin" }.Get());
         }
 
         void LabelTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
@@ -36,9 +36,9 @@ namespace RS485Trans
 
             if (e.NewValue.GetType().IsSubclassOf(typeof(BasicUICreater)))
             {
-                MainWin.Children.Clear();
+                // MainWin.Children.Clear();
                 BasicUICreater c = (BasicUICreater)e.NewValue;
-                MainWin.Children.Add(c.Get());
+                MainWin.Content = c.Get();
             }
 
         }

@@ -33,7 +33,7 @@ namespace RS485Trans.UIs
 
             SendButton.Click += SendButton_Click;
 
-            UpdateText();
+            // UpdateText();
         }
 
         public void UpdateText()

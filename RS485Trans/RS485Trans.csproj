@@ -49,9 +49,6 @@
     <Compile Include="Pages\LcdControlPage.xaml.cs">
       <DependentUpon>LcdControlPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Page1.xaml.cs">
-      <DependentUpon>Page1.xaml</DependentUpon>
-    </Compile>
     <Compile Include="RequireController.cs" />
     <Compile Include="Requires\BasicRequire.cs" />
     <Compile Include="Requires\LCDReadRequire.cs" />
@@ -61,9 +58,6 @@
     <Compile Include="RS485Driver.cs" />
     <Compile Include="UIs\LCDControl.xaml.cs">
       <DependentUpon>LCDControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UIs\UserControl1.xaml.cs">
-      <DependentUpon>UserControl1.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -81,15 +75,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Page1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UIs\LCDControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UIs\UserControl1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
