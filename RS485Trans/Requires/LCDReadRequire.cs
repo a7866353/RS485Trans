@@ -12,7 +12,7 @@ namespace RS485Trans.Requires
         public override byte[] GetData()
         {
             DataWriter dc = new DataWriter();
-            dc.Add((byte)FunctionCode.LCDWrite);
+            dc.Add((byte)FunctionCode.LCDRead);
             dc.Add(DisplayLine);
 
             return dc.GetBuffer();
@@ -29,7 +29,7 @@ namespace RS485Trans.Requires
                 Result = dr.GetByte();
                 Text = null;
             }
-            else if (funcCode == FunctionCode.RegiestReadShort)
+            else if (funcCode == FunctionCode.LCDRead)
             {
                 Result = 0;
                 Text = dr.GetString();

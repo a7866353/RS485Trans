@@ -30,11 +30,11 @@ namespace RS485Trans.Requires
         }
         public void Add(byte data)
         {
-            _dataList.Add(BitConverter.GetBytes(data));
+            _dataList.Add(new byte[]{ data });
         }
         public void Add(FunctionCode data)
         {
-            _dataList.Add(BitConverter.GetBytes((byte)data));
+            _dataList.Add(new byte[] { (byte)data });
 
         }
         public void Add(short data)
@@ -44,6 +44,8 @@ namespace RS485Trans.Requires
         }
         public void Add(string data)
         {
+            if (data == null)
+                data = "";
             _dataList.Add(ASCIIEncoding.ASCII.GetBytes(data));
 
         }
@@ -58,9 +60,15 @@ namespace RS485Trans.Requires
             _pos = 0;
         }
 
+        public FunctionCode GetFuncCode()
+        {
+            byte res = _data[_pos];
+            _pos += sizeof(byte);
+            return (FunctionCode)res;
+        }
         public byte GetByte()
         {
-            byte res = (byte)BitConverter.ToChar(_data, _pos);
+            byte res = _data[_pos];
             _pos += sizeof(byte);
             return res;
         }
@@ -97,7 +105,7 @@ namespace RS485Trans.Requires
     {
 
         private Semaphore _workSem;
-        private int _timeout = 1000;
+        private int _timeout = 0;
         private byte[] _resultBuffer;
 
         protected RequireController.ReqType _ReqType = RequireController.ReqType.Normal;

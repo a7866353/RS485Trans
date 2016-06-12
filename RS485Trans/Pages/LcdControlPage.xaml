@@ -8,16 +8,16 @@
 	Title="Page1" Height="303.8" Width="439.2">
 
     <Grid Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Stretch">
-        <uis:LCDControl  Margin="55,2.8,68.2,258" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <uis:LCDControl DisplayLine="0"  Margin="55,2.8,68.2,258" HorizontalAlignment="Left" VerticalAlignment="Top" />
         <Label Content="LCD 1:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
 
-        <uis:LCDControl  Margin="55,41.4,68.2,219.4" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <uis:LCDControl DisplayLine="1"  Margin="55,41.4,68.2,219.4" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Label Content="LCD 2:" HorizontalAlignment="Left" Margin="10,48.6,0,0" VerticalAlignment="Top"/>
 
-        <uis:LCDControl  Margin="55,80,68.2,180.8" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <uis:LCDControl DisplayLine="2"  Margin="55,80,68.2,180.8" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Label Content="LCD 3:" HorizontalAlignment="Left" Margin="10,87.2,0,0" VerticalAlignment="Top"/>
 
-        <uis:LCDControl  Margin="55,118.6,68.2,142.2" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <uis:LCDControl DisplayLine="3"  Margin="55,118.6,68.2,142.2" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Label Content="LCD 4:" HorizontalAlignment="Left" Margin="10,125.8,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Page>

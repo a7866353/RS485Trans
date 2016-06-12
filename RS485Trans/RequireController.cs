@@ -14,7 +14,10 @@ namespace RS485Trans
             get
             {
                 if (_ctrl == null)
+                {
                     _ctrl = new RequireController();
+                    _ctrl.Start();
+                }
                 return _ctrl;
             }
         }
@@ -49,6 +52,7 @@ namespace RS485Trans
                         foreach(BasicRequire req in reqList)
                         {
                             currReq = req;
+                            reqList.Remove(req);
                             break;
                         }
                         if (currReq != null)
@@ -65,6 +69,8 @@ namespace RS485Trans
 
                     DataFrame rcvFrame = _rs485Master.Send(sendFrame);
                     currReq.SetResult(rcvFrame.Data);
+
+                    currReq = null;
                 }
             }
         }
@@ -72,6 +78,8 @@ namespace RS485Trans
         public RequireController()
         {
             _reqListArr = new List<BasicRequire>[Enum.GetValues(typeof(ReqType)).Length];
+            for (int i = 0; i < _reqListArr.Length; i++)
+                _reqListArr[i] = new List<BasicRequire>();
         }
         public void Start()
         {
@@ -83,7 +91,7 @@ namespace RS485Trans
             _workThread = new Thread(new ThreadStart(work));
             _workThread.Start();
 
-            _rs485Master = new RS485MasterDriver();
+            // _rs485Master = new RS485MasterDriver();
             _rs485Master = new SimMasterDrvier();
         }
         public void Stop()
@@ -96,7 +104,13 @@ namespace RS485Trans
         public void AddReq(BasicRequire req, ReqType type)
         {
             _reqListArr[(int)type].Add(req);
-            _workSem.Release();
+            try
+            {
+                _workSem.Release();
+            }catch (Exception e)
+            {
+
+            }
         }
     }
 }
