@@ -56,6 +56,7 @@
     <Compile Include="Requires\RegiestReadRequire.cs" />
     <Compile Include="Requires\RegiestWriteRequire.cs" />
     <Compile Include="RS485Driver.cs" />
+    <Compile Include="SimMasterDrvier.cs" />
     <Compile Include="UIs\LCDControl.xaml.cs">
       <DependentUpon>LCDControl.xaml</DependentUpon>
     </Compile>

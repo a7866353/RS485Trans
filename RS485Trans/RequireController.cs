@@ -29,7 +29,7 @@ namespace RS485Trans
         private bool _workFinish;
         private Thread _workThread;
         private Semaphore _workSem;
-        private RS485MasterDriver _rs485Master;
+        private IMasterDriver _rs485Master;
 
         private void work()
         {
@@ -84,6 +84,7 @@ namespace RS485Trans
             _workThread.Start();
 
             _rs485Master = new RS485MasterDriver();
+            _rs485Master = new SimMasterDrvier();
         }
         public void Stop()
         {

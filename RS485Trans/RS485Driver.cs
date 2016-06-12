@@ -97,7 +97,12 @@ namespace RS485Trans
         }
     }
 
-    class RS485MasterDriver
+    interface IMasterDriver
+    {
+        DataFrame Send(DataFrame frame);
+    }
+
+    class RS485MasterDriver : IMasterDriver
     {
         static public string[] GetList()
         {
