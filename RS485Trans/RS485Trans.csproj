@@ -50,6 +50,12 @@
     <Compile Include="Pages\LcdControlPage.xaml.cs">
       <DependentUpon>LcdControlPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\RegiestControlPage.xaml.cs">
+      <DependentUpon>RegiestControlPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RegiestListPage.xaml.cs">
+      <DependentUpon>RegiestListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RequireController.cs" />
     <Compile Include="Requires\BasicRequire.cs" />
     <Compile Include="Requires\LCDReadRequire.cs" />
@@ -60,6 +66,12 @@
     <Compile Include="SimMasterDrvier.cs" />
     <Compile Include="UIs\LCDControl.xaml.cs">
       <DependentUpon>LCDControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIs\RegiestContol.xaml.cs">
+      <DependentUpon>RegiestContol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIs\RegiestLabel.xaml.cs">
+      <DependentUpon>RegiestLabel.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -77,7 +89,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\RegiestControlPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RegiestListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UIs\LCDControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UIs\RegiestContol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UIs\RegiestLabel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

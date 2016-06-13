@@ -45,7 +45,6 @@ namespace RS485Trans
 
         void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-
         }
     }
     public abstract class BasicUICreater : TreeViewItem

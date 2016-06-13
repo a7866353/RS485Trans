@@ -1,0 +1,20 @@
+﻿<Page x:Class="RS485Trans.Pages.RegiestControlPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:uis="clr-namespace:RS485Trans.UIs"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+	Title="RegiestControlPage">
+
+
+    <StackPanel Margin="10,10,10,10" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <StackPanel Orientation="Horizontal"><Label Content="Addr 1: "/><uis:RegiestContol RegiestAddress="1" /></StackPanel>
+        <StackPanel Orientation="Horizontal"><Label Content="Addr 2: "/><uis:RegiestContol RegiestAddress="2" /></StackPanel>
+        <StackPanel Orientation="Horizontal"><Label Content="Addr 3: "/><uis:RegiestContol RegiestAddress="3" /></StackPanel>
+        <StackPanel Orientation="Horizontal"><Label Content="Addr 4: "/><uis:RegiestContol RegiestAddress="4" /></StackPanel>
+        <StackPanel Orientation="Horizontal"><Label Content="Addr 5: "/><uis:RegiestContol RegiestAddress="5" /></StackPanel>
+    </StackPanel>
+
+</Page>

@@ -10,7 +10,7 @@ namespace RS485Trans.Requires
         public override byte[] GetData()
         {
             DataWriter dc = new DataWriter();
-            dc.Add((byte)FunctionCode.RegiestWriteShort);
+            dc.Add((byte)FunctionCode.RegiestReadShort);
             dc.Add(RegiestAddress);
 
             return dc.GetBuffer();

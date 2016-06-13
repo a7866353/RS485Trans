@@ -11,16 +11,29 @@
         </Grid.ColumnDefinitions>
 
         <TreeView Name="LabelTreeView" Margin="10,10,10,10" VerticalAlignment="Stretch" Grid.Column="0">
-            <TreeViewItem Header="控制器">
+            <TreeViewItem Header="控制器" IsExpanded="True">
                 <local:PageCreater Header="LCD控制" WinName="LCD控制" >
                     <local:PageCreater.Page>
                         <pages:LcdControlPage/>
                     </local:PageCreater.Page>
                 </local:PageCreater>
-                <local:UICreater Header="LCD Control 01" WinName="LCD01"/>
+                <local:PageCreater Header="寄存器控制" WinName="寄存器控制" >
+                    <local:PageCreater.Page>
+                        <pages:RegiestControlPage/>
+                    </local:PageCreater.Page>
+                </local:PageCreater>
                 <local:UICreater Header="LCD Control 02" WinName="LCD02"/>
                 <local:UICreater Header="LCD Control 03" WinName="LCD03"/>
             </TreeViewItem>
+            <TreeViewItem Header="监视器" IsExpanded="True">
+                <local:PageCreater Header="寄存器清单" WinName="寄存器清单" >
+                    <local:PageCreater.Page>
+                        <pages:RegiestListPage/>
+                    </local:PageCreater.Page>
+                </local:PageCreater>
+
+            </TreeViewItem>
+
         </TreeView>
         <Frame Name="MainWin" NavigationUIVisibility="Hidden" HorizontalAlignment="Left" Height="300.8" Margin="0,0,-38.4,0" VerticalAlignment="Top" Width="396.8" Grid.Column="1"/>
 
