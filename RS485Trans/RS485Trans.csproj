@@ -56,6 +56,9 @@
     <Compile Include="Pages\RegiestListPage.xaml.cs">
       <DependentUpon>RegiestListPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\SerialPortSetting.xaml.cs">
+      <DependentUpon>SerialPortSetting.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RequireController.cs" />
     <Compile Include="Requires\BasicRequire.cs" />
     <Compile Include="Requires\LCDReadRequire.cs" />
@@ -94,6 +97,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\RegiestListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SerialPortSetting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

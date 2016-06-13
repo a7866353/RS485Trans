@@ -18,7 +18,7 @@ namespace RS485Trans
             {
                 byte[] buf = new byte[3];
                 BitConverter.GetBytes(SalveAddress).CopyTo(buf, 0);
-                BitConverter.GetBytes(Length).CopyTo(buf, 2);
+                buf[2] = Length;
 
                 return buf;
             }
@@ -39,6 +39,7 @@ namespace RS485Trans
         private byte[] _addrBuf;
         private byte[] _dataBuf;
         private int _pos;
+        private bool _isReady; 
         public DataFrameAnalyzer()
         {
             _addrBuf = new byte[2];
@@ -49,16 +50,23 @@ namespace RS485Trans
             _targetAddress = addr;
             _state = State.RcvAddress;
             _addrBuf.Initialize();
+            _isReady = false;
         }
         public DataFrame Set(byte data)
         {
             switch(_state)
             {
                 case State.RcvAddress:
-                    _addrBuf[0] = data;
+                    _addrBuf[1] = data;
+                    if (_isReady == false)
+                    {
+                        _addrBuf[0] = _addrBuf[1];
+                        _isReady = true;
+                        break;
+                    }
                     if(BitConverter.ToUInt16(_addrBuf,0) != _targetAddress)
                     {
-                        _addrBuf[1] = _addrBuf[0];
+                        _addrBuf[0] = _addrBuf[1];
                         return null;
                     }
                 
@@ -141,7 +149,7 @@ namespace RS485Trans
         } 
 
 
-        public int RecevieTimeout = 1000;
+        public int RecevieTimeout = -1;
         public bool IsOpen
         {
             get { return _sp.IsOpen; }

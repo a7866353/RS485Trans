@@ -22,8 +22,12 @@
                         <pages:RegiestControlPage/>
                     </local:PageCreater.Page>
                 </local:PageCreater>
-                <local:UICreater Header="LCD Control 02" WinName="LCD02"/>
-                <local:UICreater Header="LCD Control 03" WinName="LCD03"/>
+                <local:PageCreater Header="串口设置" WinName="串口设置" >
+                    <local:PageCreater.Page>
+                        <pages:SerialPortSetting/>
+                    </local:PageCreater.Page>
+                </local:PageCreater>
+
             </TreeViewItem>
             <TreeViewItem Header="监视器" IsExpanded="True">
                 <local:PageCreater Header="寄存器清单" WinName="寄存器清单" >
