@@ -49,6 +49,10 @@ namespace RS485Trans.Requires
             _dataList.Add(ASCIIEncoding.ASCII.GetBytes(data));
 
         }
+        public void Add(byte[] data)
+        {
+            _dataList.Add(data);
+        }
     }
     class DataReader
     {
@@ -98,6 +102,7 @@ namespace RS485Trans.Requires
         RegiestReadShort,
         LCDWrite,
         LCDRead,
+        LoopBack,
     }
 
 
