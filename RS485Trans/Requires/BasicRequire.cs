@@ -104,9 +104,16 @@ namespace RS485Trans.Requires
     abstract class BasicRequire
     {
 
+        private enum State
+        {
+            Init,
+            Ready,
+            Send,
+        }
         private Semaphore _workSem;
-        private int _timeout = 0;
+        private int _timeout = -1;
         private byte[] _resultBuffer;
+        private State _state;
 
         protected RequireController.ReqType _ReqType = RequireController.ReqType.Normal;
         abstract protected ErrorCode CovertResult(byte[] data);
@@ -121,23 +128,48 @@ namespace RS485Trans.Requires
         public BasicRequire()
         {
             _workSem = new Semaphore(0, 1);
+            _state = State.Ready;
         }
         abstract public byte[] GetData();
         public ErrorCode DoRequire()
         {
+            if (_state != State.Ready)
+            {
+                Debug.PrintLine("DoRequireError!" + this.GetHashCode());
+                return ErrorCode.Error;
+
+            } 
+            _state = State.Send;
+
+            Debug.PrintLine("DoRequire" + this.GetHashCode());
             RequireController.Controller.AddReq(this, _ReqType);
 
             if (_workSem.WaitOne(_timeout) == false)
+            {
+                lock (this)
+                {
+                    _state = State.Ready;
+                }
+                Debug.PrintLine("DoRequireTimeout!" + this.GetHashCode());
                 return ErrorCode.Timeout;
+            }
             if (_resultBuffer == null)
                 return ErrorCode.Error;
 
+            Debug.PrintLine("DoRequireEnd!" + this.GetHashCode());
             return CovertResult(_resultBuffer);
         }
         public void SetResult(byte[] data)
         {
+            if (_state != State.Send)
+            {
+                Debug.PrintLine("[E] SetResult Error!" + this.GetHashCode());
+                return;
+            }
+            Debug.PrintLine("SetResult: " + this.GetHashCode());
             _resultBuffer = data;
             _workSem.Release();
+            _state = State.Ready;
         }
 
 

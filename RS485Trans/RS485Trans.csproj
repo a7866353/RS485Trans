@@ -46,6 +46,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Debug.cs" />
     <Compile Include="Pages\LcdControlPage.xaml.cs">
       <DependentUpon>LcdControlPage.xaml</DependentUpon>
     </Compile>
