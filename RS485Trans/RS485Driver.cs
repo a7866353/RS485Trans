@@ -6,6 +6,18 @@ using System.Threading;
 
 namespace RS485Trans
 {
+    class TransDriver
+    {
+        static IMasterDriver _driver;
+        static public void Set(IMasterDriver drv)
+        {
+            _driver = drv;
+        }
+        static public IMasterDriver Get()
+        {
+            return _driver;
+        }
+    }
     class DataFrame
     {
         public short SalveAddress;

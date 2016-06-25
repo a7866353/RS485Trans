@@ -55,8 +55,9 @@ namespace RS485Trans.Pages
             _driver = new RS485MasterDriver();
             _driver.Open(portName, 9600);
 
+            TransDriver.Set(_driver);
 
-            UartTest();
+            // UartTest();
 
 
         }

@@ -83,8 +83,15 @@ namespace RS485Trans.Requires
             _pos += sizeof(short);
             return res;
         }
+        public byte[] GetBytes(int count)
+        {
+            byte[] resArr = new byte[count];
+            Array.Copy(_data, _pos, resArr, 0, count);
+            return resArr;
+        }
         public string GetString()
         {
+            int strLen = ASCIIEncoding.ASCII.GetCharCount(_data, _pos, 0);
             string str = ASCIIEncoding.ASCII.GetString(_data, _pos, _data.Length - _pos);
             _pos += str.Length + 1;
             return str;

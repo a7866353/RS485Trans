@@ -32,7 +32,8 @@ namespace RS485Trans.Requires
             else if (funcCode == FunctionCode.LCDRead)
             {
                 Result = 0;
-                Text = dr.GetString();
+                byte[] resArr = dr.GetBytes(_textLength);
+                Text = ASCIIEncoding.ASCII.GetString(resArr);
             }
             else
             {

@@ -6,6 +6,7 @@ using System.Threading;
 
 namespace RS485Trans
 {
+
     class RequireController
     {
         static private RequireController _ctrl;
@@ -33,6 +34,8 @@ namespace RS485Trans
         private Thread _workThread;
         private Semaphore _workSem;
         private IMasterDriver _rs485Master;
+
+        private short _deviceAddress = 0x5501;
 
         private void work()
         {
@@ -66,6 +69,7 @@ namespace RS485Trans
                     DataFrame sendFrame = new DataFrame();
                     sendFrame.Data = currReq.GetData();
                     sendFrame.Length = (byte)sendFrame.Data.Length;
+                    sendFrame.SalveAddress = _deviceAddress;
 
                     DataFrame rcvFrame = _rs485Master.Send(sendFrame);
                     currReq.SetResult(rcvFrame.Data);
@@ -91,8 +95,8 @@ namespace RS485Trans
             _workThread = new Thread(new ThreadStart(work));
             _workThread.Start();
 
-            // _rs485Master = new RS485MasterDriver();
-            _rs485Master = new SimMasterDrvier();
+            _rs485Master = TransDriver.Get();
+            // _rs485Master = new SimMasterDrvier();
         }
         public void Stop()
         {
