@@ -23,20 +23,14 @@ namespace RS485Trans.Requires
         {
             DataReader dr = new DataReader(data);
             FunctionCode funcCode = (FunctionCode)dr.GetByte();
-            if (funcCode == FunctionCode.Result)
-            {
-                Result = dr.GetByte();
-                Value = 0;
-            }
-            else if (funcCode == FunctionCode.RegiestReadShort)
-            {
-                Result = 0;
-                Value = dr.GetShort();
-            }
-            else
-            {
+
+            Result = dr.GetByte();
+            Value = dr.GetShort();
+
+            if( (funcCode != FunctionCode.RegiestReadShort) &&
+                (Result != 0) )
                 return ErrorCode.Error;
-            }
+ 
 
             return ErrorCode.OK;
         }

@@ -20,7 +20,7 @@ namespace RS485Trans
     }
     class DataFrame
     {
-        public short SalveAddress;
+        public ushort SalveAddress;
         public byte Length;
         public byte[] Data;
 
@@ -40,7 +40,7 @@ namespace RS485Trans
 
     class DataFrameAnalyzer
     {
-        private short _targetAddress;
+        private ushort _targetAddress;
         private enum State
         {
             RcvAddress,
@@ -57,7 +57,7 @@ namespace RS485Trans
             _addrBuf = new byte[2];
         }
 
-        public void SetTargetAddress(short addr)
+        public void SetTargetAddress(ushort addr)
         {
             _targetAddress = addr;
             _state = State.RcvAddress;

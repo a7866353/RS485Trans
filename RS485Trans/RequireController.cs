@@ -35,7 +35,7 @@ namespace RS485Trans
         private Semaphore _workSem;
         private IMasterDriver _rs485Master;
 
-        private short _deviceAddress = 0x5501;
+        private ushort _deviceAddress = 0xF001;
 
         private void work()
         {

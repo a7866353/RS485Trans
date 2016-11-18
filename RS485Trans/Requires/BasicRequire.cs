@@ -103,8 +103,7 @@ namespace RS485Trans.Requires
 
     enum FunctionCode
     {
-        None = 0,
-        Result,
+        Result = 0,
         RegiestWriteShort,
         RegiestReadShort,
         LCDWrite,
